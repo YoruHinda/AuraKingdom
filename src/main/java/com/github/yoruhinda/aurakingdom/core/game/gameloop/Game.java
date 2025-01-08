@@ -1,11 +1,11 @@
 package main.java.com.github.yoruhinda.aurakingdom.core.game.gameloop;
 
-import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GameFrame;
+import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GameScreen;
 
 public class Game extends Thread{
     private boolean running;
     public Game(){
-        new GameFrame();
+        new GameScreen();
     }
 
     @Override
