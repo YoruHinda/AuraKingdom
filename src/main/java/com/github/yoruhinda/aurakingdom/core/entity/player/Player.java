@@ -2,10 +2,20 @@ package main.java.com.github.yoruhinda.aurakingdom.core.entity.player;
 
 import main.java.com.github.yoruhinda.aurakingdom.core.entity.Entity;
 
-public class Player extends Entity {
-    private float x, y;
+import java.awt.*;
 
-    protected Player(float x, float y) {
+public class Player extends Entity {
+    public Player(float x, float y) {
         super(x, y);
+    }
+
+    @Override
+    public void update() {
+        super.update();
+    }
+
+    @Override
+    public void render(Graphics graphics) {
+        super.render(graphics);
     }
 }

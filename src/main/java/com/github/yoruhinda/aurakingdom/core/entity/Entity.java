@@ -1,5 +1,7 @@
 package main.java.com.github.yoruhinda.aurakingdom.core.entity;
 
+import java.awt.*;
+
 public abstract class Entity {
     protected float x;
     protected float y;
@@ -9,11 +11,27 @@ public abstract class Entity {
         this.y = y;
     }
 
-    protected void update(){
+    public void update(){
 
     }
 
-    protected void render(){
+    public void render(Graphics graphics){
 
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
     }
 }
