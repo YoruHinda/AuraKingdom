@@ -7,3 +7,7 @@
 # How Play?
 
 # LICENSE
+
+# Credits
+
+- Warrior sprite: @Clembod
