@@ -4,8 +4,11 @@ import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GameScreen;
 
 public class Game extends Thread{
     private boolean running;
+    private GameScreen gameScreen;
+
     public Game(){
-        new GameScreen();
+        this.gameScreen = new GameScreen();
+        this.start();
     }
 
     @Override
