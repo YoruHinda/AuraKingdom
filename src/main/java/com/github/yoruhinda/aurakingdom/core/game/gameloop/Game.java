@@ -7,25 +7,42 @@ import main.java.com.github.yoruhinda.aurakingdom.core.handlers.move.KeyMovement
 import java.awt.*;
 
 public class Game extends Thread{
+    private static final int FPS = 60;
+    private static final double NS_PER_TICK = 1_000_000_000.0 / FPS;
     private boolean running;
     private final GameScreen gameScreen;
     private KeyMovementEvent keyMovementEvent;
     private Player player;
 
     public Game(){
-        this.gameScreen = new GameScreen();
+        this.gameScreen = new GameScreen(this);
         this.keyMovementEvent = new KeyMovementEvent();
         this.gameScreen.addKeyListener(this.keyMovementEvent);
+        this.player = new Player(0,500, this.keyMovementEvent);
         this.running = true;
         this.start();
     }
 
     @Override
     public void run() {
+        long lastTime = System.nanoTime();
+        double unprocessedTime = 0;
+
         while(running){
-            update();
-            render(this.gameScreen.getGraphics());
+            long now = System.nanoTime();
+            unprocessedTime += ((now - lastTime) / NS_PER_TICK);
+            lastTime = now;
+            if(unprocessedTime >= 1){
+                update();
+                unprocessedTime --;
+            }
             this.gameScreen.repaint();
+
+            try {
+                Thread.sleep(5);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -33,7 +50,7 @@ public class Game extends Thread{
         this.player.update();
     }
 
-    private void render(Graphics graphics){
+    public void render(Graphics graphics){
         this.player.render(graphics);
     }
 
