@@ -32,14 +32,14 @@ public class Game extends Thread{
             long now = System.nanoTime();
             unprocessedTime += ((now - lastTime) / NS_PER_TICK);
             lastTime = now;
-            if(unprocessedTime >= 1){
+            while(unprocessedTime >= 1){
                 update();
                 unprocessedTime --;
             }
             this.gameScreen.repaint();
 
             try {
-                Thread.sleep(5);
+                Thread.sleep(1);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
