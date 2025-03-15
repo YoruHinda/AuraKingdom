@@ -3,10 +3,10 @@ package main.java.com.github.yoruhinda.aurakingdom.core.entity;
 import java.awt.*;
 
 public abstract class Entity {
-    protected float x;
-    protected float y;
+    protected int x;
+    protected int y;
 
-    protected Entity(float x, float y){
+    protected Entity(int x, int y){
         this.x = x;
         this.y = y;
     }
@@ -19,19 +19,19 @@ public abstract class Entity {
 
     }
 
-    public float getX() {
+    public int getX() {
         return x;
     }
 
-    public void setX(float x) {
+    public void setX(int x) {
         this.x = x;
     }
 
-    public float getY() {
+    public int getY() {
         return y;
     }
 
-    public void setY(float y) {
+    public void setY(int y) {
         this.y = y;
     }
 }
