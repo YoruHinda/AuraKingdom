@@ -1,9 +1,9 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.handlers.move;
+package main.java.com.github.yoruhinda.aurakingdom.core.handlers;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyMovementEvent implements KeyListener {
+public class KeyHandler implements KeyListener {
     private boolean right, left;
     @Override
     public void keyTyped(KeyEvent keyEvent) {
