@@ -4,8 +4,12 @@ import main.java.com.github.yoruhinda.aurakingdom.core.entity.player.Player;
 import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GamePanel;
 import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GameWindow;
 import main.java.com.github.yoruhinda.aurakingdom.core.handlers.KeyHandler;
+import main.java.com.github.yoruhinda.aurakingdom.core.util.SpriteLoader;
+import main.java.com.github.yoruhinda.aurakingdom.core.util.SpriteSheet;
+import main.java.com.github.yoruhinda.aurakingdom.core.util.resourcedirectory.MapDirectory;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Game extends Thread {
     private static final int FPS = 60;
@@ -17,12 +21,29 @@ public class Game extends Thread {
     private final GamePanel gamePanel;
     private KeyHandler keyHandler;
     private Player player;
+    private int[][] sla;
+    private SpriteSheet spriteSheet;
+    BufferedImage bufferedImage;
 
     public Game() {
         this.keyHandler = new KeyHandler();
         this.gamePanel = new GamePanel(this);
         this.gameWindow = new GameWindow(gamePanel, this.keyHandler);
-        this.player = new Player(0, 500, this.keyHandler);
+        this.player = new Player(0, 4 * GameWindow.TILE_SIZE, this.keyHandler);
+        sla = new int[][]{
+                {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+        };
+        spriteSheet = new SpriteSheet(SpriteLoader.getTileMap(MapDirectory.MAP));
+        spriteSheet.withRowsAndCols(10, 31);
+        spriteSheet.withSpriteSize(16,16);
+        bufferedImage = spriteSheet.sprite().get(250);
         this.running = true;
         this.start();
     }
@@ -75,7 +96,17 @@ public class Game extends Thread {
     }
 
     public void render(Graphics graphics) {
+        for(int rows = 0; rows < sla.length; rows++){
+            for(int cols =0;cols < sla[rows].length; cols++){
+                if(sla[rows][cols] == 1){
+                    graphics.drawImage(bufferedImage, cols * GameWindow.TILE_SIZE, rows  * GameWindow.TILE_SIZE, GameWindow.TILE_SIZE, GameWindow.TILE_SIZE, null);
+                }
+            }
+        }
+
         this.player.render(graphics);
+
+
     }
 
     public boolean isRunning() {

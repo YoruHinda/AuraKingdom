@@ -43,7 +43,6 @@ public class Player extends Entity {
             animation = idle;
             animation.start();
         }
-        if(keyHandler.isLeft())this.x -= 3;
         if(keyHandler.isRight()){
             this.x += 3;
             this.animation.stop();

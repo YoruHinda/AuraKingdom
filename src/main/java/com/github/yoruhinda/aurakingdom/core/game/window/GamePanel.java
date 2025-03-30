@@ -10,6 +10,7 @@ public class GamePanel extends JPanel {
 
     public GamePanel(Game game){
         this.game = game;
+        this.setPreferredSize(new Dimension(GameWindow.SCREEN_WIDTH, GameWindow.SCREEN_HEIGHT));
     }
 
     @Override
