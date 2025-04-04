@@ -21,7 +21,6 @@ public class Level {
 
     public Level(String levelName){
         convertJsonInLayerClass();
-        Layer layer1 = layers.stream().filter(layer -> layer.getLayerType().equals(LayerType.TILE_LAYER)).findFirst().orElseThrow();
     }
 
     public void render(){
