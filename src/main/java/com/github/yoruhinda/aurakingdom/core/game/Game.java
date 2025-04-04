@@ -5,12 +5,8 @@ import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GamePanel;
 import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GameWindow;
 import main.java.com.github.yoruhinda.aurakingdom.core.handlers.KeyHandler;
 import main.java.com.github.yoruhinda.aurakingdom.core.level.Level;
-import main.java.com.github.yoruhinda.aurakingdom.core.util.SpriteLoader;
-import main.java.com.github.yoruhinda.aurakingdom.core.util.SpriteSheet;
-import main.java.com.github.yoruhinda.aurakingdom.core.util.resourcedirectory.MapDirectory;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class Game extends Thread {
     private static final int FPS = 60;
@@ -24,12 +20,12 @@ public class Game extends Thread {
     private Player player;
 
     public Game() {
+        Level level = new Level("starter_level");
         this.keyHandler = new KeyHandler();
         this.gamePanel = new GamePanel(this);
         this.gameWindow = new GameWindow(gamePanel, this.keyHandler);
         this.player = new Player(0, 4 * GameWindow.TILE_SIZE, this.keyHandler);
         this.running = true;
-        Level level = new Level();
         this.start();
     }
 

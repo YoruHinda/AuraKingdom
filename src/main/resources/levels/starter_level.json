@@ -1,11 +1,8 @@
 {
-  "compressionlevel":-1,
- "height":8,
- "infinite":false,
  "layers":[
         {
          "id":2,
-         "image":"..\/Imagens\/darkcastle.jpg",
+         "image":"main/resources/darkcastle.jpg",
          "imageheight":128,
          "imagewidth":256,
          "name":"Camada de Imagens 1",
@@ -32,21 +29,9 @@
          "visible":true,
          "width":16,
          "x":0,
-         "y":0
-        }],
- "nextlayerid":3,
- "nextobjectid":1,
- "orientation":"orthogonal",
- "renderorder":"right-down",
- "tiledversion":"1.11.2",
- "tileheight":16,
- "tilesets":[
-        {
-         "firstgid":1,
-         "source":"..\/castle tile set.tsx"
-        }],
- "tilewidth":16,
- "type":"map",
- "version":"1.10",
- "width":16
+         "y":0,
+          "source":"main/resources/tileset.png",
+          "tileheight":16,
+          "tilewidth":16
+        }]
 }

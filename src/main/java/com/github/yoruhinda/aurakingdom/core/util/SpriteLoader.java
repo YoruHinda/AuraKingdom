@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpriteLoader {
-    private static final String RESOURCE_FOLDER = "main/resources/";
+    public static final String RESOURCE_FOLDER = "main/resources/";
 
     public static List<BufferedImage> getWarriorSprite(String warriorSpriteDir){
         List<BufferedImage> warriorSprites = new ArrayList<>();
