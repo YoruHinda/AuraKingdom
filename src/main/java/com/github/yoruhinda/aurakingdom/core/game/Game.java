@@ -18,13 +18,14 @@ public class Game extends Thread {
     private final GamePanel gamePanel;
     private KeyHandler keyHandler;
     private Player player;
+    private Level level;
 
     public Game() {
-        Level level = new Level("starter_level");
+        this.level = new Level("starter_level");
         this.keyHandler = new KeyHandler();
+        this.player = new Player(0, 4 * GameWindow.TILE_SIZE, this.keyHandler);
         this.gamePanel = new GamePanel(this);
         this.gameWindow = new GameWindow(gamePanel, this.keyHandler);
-        this.player = new Player(0, 4 * GameWindow.TILE_SIZE, this.keyHandler);
         this.running = true;
         this.start();
     }
@@ -77,6 +78,7 @@ public class Game extends Thread {
     }
 
     public void render(Graphics graphics) {
+        this.level.render(graphics);
         this.player.render(graphics);
     }
 
