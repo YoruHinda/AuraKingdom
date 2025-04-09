@@ -33,6 +33,7 @@ public class Level {
     }
 
     public void render(Graphics graphics) {
+        graphics.drawImage(layers.get(0).getImage(),0,0, layers.get(0).getImage().getWidth() * GameWindow.SCALE, layers.get(0).getImage().getHeight() * GameWindow.SCALE, null);
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 16; col++) {
                 if (layers.get(1).getData()[row][col] == 0) {
@@ -57,7 +58,7 @@ public class Level {
                     int[] array = tileData.stream().mapToInt(i -> i).toArray();
                     layers.add(new Layer(node.get("id").asInt(), node.get("type").asText(), node.get("name").asText(), array));
                 } else {
-                    layers.add(new Layer(node.get("id").asInt(), node.get("type").asText(), node.get("name").asText()));
+                    layers.add(new Layer(node.get("id").asInt(), node.get("type").asText(), node.get("name").asText(), node.get("image").asText()));
                 }
             }
         } catch (IOException e) {
