@@ -24,38 +24,40 @@ public class Level {
     private List<Layer> layers;
     private SpriteSheet spriteSheet;
 
-    public Level(String levelName){
+    public Level(String levelName) {
         this.levelName = levelName;
         this.spriteSheet = new SpriteSheet(SpriteLoader.getTileMap(MapDirectory.MAP));
-        spriteSheet.withSpriteSize(16,16);
-        spriteSheet.withRowsAndCols(10,31);
+        spriteSheet.withSpriteSize(16, 16);
+        spriteSheet.withRowsAndCols(10, 31);
         convertJsonInLayerClass();
     }
 
-    public void render(Graphics graphics){
-        Layer layer = layers.get(1);
-        for(int x = 0; x < 16;x ++){
-            for(int y = 0; y < 8; y++){
-                graphics.drawImage(spriteSheet.sprite().get(layer.getData()[x][y]), x * GameWindow.TILE_SIZE, y * GameWindow.TILE_SIZE, GameWindow.TILE_SIZE, GameWindow.TILE_SIZE, null);
+    public void render(Graphics graphics) {
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 16; col++) {
+                if (layers.get(1).getData()[row][col] == 0) {
+                    continue;
+                }
+                graphics.drawImage(spriteSheet.sprite().get(layers.get(1).getData()[row][col] - 1), col * GameWindow.TILE_SIZE, row * GameWindow.TILE_SIZE, GameWindow.TILE_SIZE, GameWindow.TILE_SIZE, null);
             }
         }
     }
 
-    private void convertJsonInLayerClass(){
+    private void convertJsonInLayerClass() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             layers = new ArrayList<>();
             JsonNode jsonNode = objectMapper.readTree(new File(this.getClass().getClassLoader().getResource(SpriteLoader.RESOURCE_FOLDER + "/levels/" + levelName + ".json").getPath()));
             for (JsonNode node : jsonNode.get("layers")) {
-                if(node.get("type").asText().equalsIgnoreCase(LayerType.TILE_LAYER.getLayerType())){
+                if (node.get("type").asText().equalsIgnoreCase(LayerType.TILE_LAYER.getLayerType())) {
                     List<Integer> tileData = new ArrayList<>();
                     for (JsonNode data : node.get("data")) {
                         tileData.add(data.asInt());
                     }
                     int[] array = tileData.stream().mapToInt(i -> i).toArray();
                     layers.add(new Layer(node.get("id").asInt(), node.get("type").asText(), node.get("name").asText(), array));
-                }else{
-                    layers.add(new Layer(node.get("id").asInt(), node.get("type").asText() ,node.get("name").asText()));
+                } else {
+                    layers.add(new Layer(node.get("id").asInt(), node.get("type").asText(), node.get("name").asText()));
                 }
             }
         } catch (IOException e) {

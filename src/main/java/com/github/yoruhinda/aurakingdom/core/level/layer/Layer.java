@@ -12,27 +12,27 @@ public class Layer {
     public Layer(int id, String layerType, String name, int[] data) {
         this.id = id;
         this.name = name;
-        this.data = new int[16][8];
+        this.data = new int[8][16];
         convertJsonDataToMultiDimensionalArrayData(data);
-        if(layerType.equalsIgnoreCase("imagelayer")) this.layerType = LayerType.IMAGE_LAYER;
-        if(layerType.equalsIgnoreCase("tilelayer")) this.layerType = LayerType.TILE_LAYER;
+        if (layerType.equalsIgnoreCase("imagelayer")) this.layerType = LayerType.IMAGE_LAYER;
+        if (layerType.equalsIgnoreCase("tilelayer")) this.layerType = LayerType.TILE_LAYER;
     }
 
     public Layer(int id, String layerType, String name) {
         this.id = id;
         this.name = name;
-        if(layerType.equalsIgnoreCase("imagelayer")) this.layerType = LayerType.IMAGE_LAYER;
-        if(layerType.equalsIgnoreCase("tilelayer")) this.layerType = LayerType.TILE_LAYER;
+        if (layerType.equalsIgnoreCase("imagelayer")) this.layerType = LayerType.IMAGE_LAYER;
+        if (layerType.equalsIgnoreCase("tilelayer")) this.layerType = LayerType.TILE_LAYER;
     }
 
     public LayerType getLayerType() {
         return layerType;
     }
 
-    public void convertJsonDataToMultiDimensionalArrayData(int[] data){
-        for(int x = 0; x < 16; x++){
-            for(int y = 0;y < 8;y++){
-                this.data[x][y] = data[x * 8 + y];
+    public void convertJsonDataToMultiDimensionalArrayData(int[] data) {
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 16; col++) {
+                this.data[row][col] = data[row * 16 + col];
             }
         }
     }
