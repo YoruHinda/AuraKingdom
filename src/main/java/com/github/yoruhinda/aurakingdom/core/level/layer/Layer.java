@@ -16,8 +16,7 @@ public class Layer {
         this.name = name;
         this.data = new int[8][16];
         convertJsonDataToMultiDimensionalArrayData(data);
-        if (layerType.equalsIgnoreCase("imagelayer")) this.layerType = LayerType.IMAGE_LAYER;
-        if (layerType.equalsIgnoreCase("tilelayer")) this.layerType = LayerType.TILE_LAYER;
+        verifyTileType(layerType);
     }
 
     public Layer(int id, String layerType, String name, String image) {
@@ -28,6 +27,10 @@ public class Layer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        verifyTileType(layerType);
+    }
+
+    private void verifyTileType(String layerType) {
         if (layerType.equalsIgnoreCase("imagelayer")) this.layerType = LayerType.IMAGE_LAYER;
         if (layerType.equalsIgnoreCase("tilelayer")) this.layerType = LayerType.TILE_LAYER;
     }
@@ -38,9 +41,7 @@ public class Layer {
 
     public void convertJsonDataToMultiDimensionalArrayData(int[] data) {
         for (int row = 0; row < 8; row++) {
-            for (int col = 0; col < 16; col++) {
-                this.data[row][col] = data[row * 16 + col];
-            }
+            System.arraycopy(data, row * 16, this.data[row], 0, 16);
         }
     }
 
