@@ -20,7 +20,6 @@ public class Level {
     private String levelName;
     private Player player;
     private int[] enemies;
-    private int[][][] levelTileMap;
     private List<Layer> layers;
     private SpriteSheet spriteSheet;
 
