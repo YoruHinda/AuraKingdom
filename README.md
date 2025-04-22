@@ -7,7 +7,7 @@
 # How Play?
 
 # LICENSE
-
+This project is under for MIT LICENSE, for more details read LICENSE file.
 # Credits
 
 - Warrior sprite: @Clembod
