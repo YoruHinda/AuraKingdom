@@ -50,4 +50,8 @@ public class Player extends Entity {
             this.animation.start();
         }
     }
+
+    public void collision(){
+
+    }
 }
