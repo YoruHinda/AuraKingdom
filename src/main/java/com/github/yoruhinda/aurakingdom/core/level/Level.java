@@ -32,15 +32,15 @@ public class Level {
     }
 
     public void render(Graphics graphics) {
-        graphics.drawImage(layers.get(0).getImage(),0,0, layers.get(0).getImage().getWidth() * GameWindow.SCALE, layers.get(0).getImage().getHeight() * GameWindow.SCALE, null);
-        for (int row = 0; row < 8; row++) {
-            for (int col = 0; col < 16; col++) {
-                if (layers.get(1).getData()[row][col] == 0) {
-                    continue;
-                }
-                graphics.drawImage(spriteSheet.sprite().get(layers.get(1).getData()[row][col] - 1), col * GameWindow.TILE_SIZE, row * GameWindow.TILE_SIZE, GameWindow.TILE_SIZE, GameWindow.TILE_SIZE, null);
-            }
-        }
+//        graphics.drawImage(layers.get(0).getImage(),0,0, layers.get(0).getImage().getWidth() * GameWindow.SCALE, layers.get(0).getImage().getHeight() * GameWindow.SCALE, null);
+//        for (int row = 0; row < 8; row++) {
+//            for (int col = 0; col < 16; col++) {
+//                if (layers.get(1).getData()[row][col] == 0) {
+//                    continue;
+//                }
+//                graphics.drawImage(spriteSheet.sprite().get(layers.get(1).getData()[row][col] - 1), col * GameWindow.TILE_SIZE, row * GameWindow.TILE_SIZE, GameWindow.TILE_SIZE, GameWindow.TILE_SIZE, null);
+//            }
+//        }
     }
 
     private void convertJsonInLayerClass() {
