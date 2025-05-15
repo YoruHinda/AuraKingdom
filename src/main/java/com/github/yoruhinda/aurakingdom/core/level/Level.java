@@ -3,7 +3,6 @@ package main.java.com.github.yoruhinda.aurakingdom.core.level;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import main.java.com.github.yoruhinda.aurakingdom.core.entity.player.Player;
-import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GameWindow;
 import main.java.com.github.yoruhinda.aurakingdom.core.level.layer.Layer;
 import main.java.com.github.yoruhinda.aurakingdom.core.level.layer.LayerType;
 import main.java.com.github.yoruhinda.aurakingdom.core.util.SpriteLoader;
@@ -63,5 +62,9 @@ public class Level {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void camera(){
+
     }
 }
