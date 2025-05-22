@@ -51,6 +51,22 @@ public class Player extends Entity {
         }
     }
 
+    public void playerAttack(){
+
+    }
+
+    public void playerCrouch(){
+
+    }
+
+    public void playerDash(){
+
+    }
+
+    public void playerJump(){
+
+    }
+
     public void collision(){
 
     }

@@ -63,8 +63,4 @@ public class Level {
             e.printStackTrace();
         }
     }
-
-    private void camera(){
-
-    }
 }
