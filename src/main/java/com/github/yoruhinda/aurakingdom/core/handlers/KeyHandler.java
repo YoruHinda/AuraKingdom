@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
-    private boolean right, left;
+    private boolean right, left, jump, dash, crouch, run;
     @Override
     public void keyTyped(KeyEvent keyEvent) {
 
@@ -15,6 +15,9 @@ public class KeyHandler implements KeyListener {
         switch (keyEvent.getKeyCode()){
             case KeyEvent.VK_D -> right = true;
             case KeyEvent.VK_A -> left = true;
+            case KeyEvent.VK_SHIFT -> run = true;
+            case KeyEvent.VK_SPACE -> jump = true;
+            case KeyEvent.VK_S -> crouch = true;
         }
     }
 
@@ -23,6 +26,9 @@ public class KeyHandler implements KeyListener {
         switch (keyEvent.getKeyCode()){
             case KeyEvent.VK_D -> right = false;
             case KeyEvent.VK_A -> left = false;
+            case KeyEvent.VK_SHIFT -> run = false;
+            case KeyEvent.VK_SPACE -> jump = false;
+            case KeyEvent.VK_S -> crouch = false;
         }
     }
 
@@ -32,5 +38,21 @@ public class KeyHandler implements KeyListener {
 
     public boolean isLeft() {
         return left;
+    }
+
+    public boolean isJump() {
+        return jump;
+    }
+
+    public boolean isDash() {
+        return dash;
+    }
+
+    public boolean isCrouch() {
+        return crouch;
+    }
+
+    public boolean isRun() {
+        return run;
     }
 }
