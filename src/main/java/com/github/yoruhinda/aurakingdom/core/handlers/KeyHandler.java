@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
-    private boolean right, left, jump, dash, crouch, run;
+    private boolean right, left, jump, dash, crouch, run, attack;
     @Override
     public void keyTyped(KeyEvent keyEvent) {
 
@@ -46,6 +46,10 @@ public class KeyHandler implements KeyListener {
 
     public boolean isDash() {
         return dash;
+    }
+
+    public boolean isAttack() {
+        return attack;
     }
 
     public boolean isCrouch() {
