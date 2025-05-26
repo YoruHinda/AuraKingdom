@@ -13,22 +13,24 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getKeyCode()){
-            case KeyEvent.VK_D -> right = true;
-            case KeyEvent.VK_A -> left = true;
+            case KeyEvent.VK_RIGHT -> right = true;
+            case KeyEvent.VK_LEFT -> left = true;
             case KeyEvent.VK_SHIFT -> run = true;
             case KeyEvent.VK_SPACE -> jump = true;
-            case KeyEvent.VK_S -> crouch = true;
+            case KeyEvent.VK_DOWN -> crouch = true;
+            case KeyEvent.VK_A -> attack = true;
         }
     }
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
         switch (keyEvent.getKeyCode()){
-            case KeyEvent.VK_D -> right = false;
-            case KeyEvent.VK_A -> left = false;
+            case KeyEvent.VK_RIGHT -> right = false;
+            case KeyEvent.VK_LEFT -> left = false;
             case KeyEvent.VK_SHIFT -> run = false;
             case KeyEvent.VK_SPACE -> jump = false;
-            case KeyEvent.VK_S -> crouch = false;
+            case KeyEvent.VK_DOWN -> crouch = false;
+            case KeyEvent.VK_A -> attack = false;
         }
     }
 

@@ -65,7 +65,6 @@ public class Player extends Entity {
 
     public void playerCrouch(){
         if(keyHandler.isCrouch()){
-
             animation = crouch;
             animation.start();
         }
