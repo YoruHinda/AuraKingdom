@@ -16,8 +16,8 @@ public class Player extends Entity {
     private Animation idle;
     private Animation walking;
     private Animation jump;
-    private Animation run;
     private Animation dash;
+    private Animation attack;
     private Animation crouch;
     private Animation animation;
 
@@ -27,8 +27,9 @@ public class Player extends Entity {
         idle = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.IDLE), 6);
         walking = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.RUN), 6);
         jump = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.JUMP), 6);
-        run = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.RUN), 6);
         crouch = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.CROUCH), 6);
+        attack = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.ATTACK), 6);
+        dash = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.DASH), 6);
         animation = idle;
         animation.start();
     }
@@ -39,6 +40,8 @@ public class Player extends Entity {
         playerMovementUpdater();
         playerJump();
         playerCrouch();
+        playerAttack();
+        playerDash();
     }
 
     @Override
@@ -61,6 +64,11 @@ public class Player extends Entity {
     }
 
     public void playerAttack(){
+        if(keyHandler.isAttack()){
+            animation.stop();
+            animation = attack;
+            animation.start();
+        }
     }
 
     public void playerCrouch(){
@@ -71,7 +79,11 @@ public class Player extends Entity {
     }
 
     public void playerDash(){
-
+        if(keyHandler.isRun()){
+            animation.stop();
+            animation = dash;
+            animation.start();
+        }
     }
 
     public void playerJump(){
