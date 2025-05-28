@@ -42,25 +42,25 @@ public class Level {
 //        }
     }
 
-    private void convertJsonInLayerClass() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            layers = new ArrayList<>();
-            JsonNode jsonNode = objectMapper.readTree(new File(this.getClass().getClassLoader().getResource(SpriteLoader.RESOURCE_FOLDER + "/levels/" + levelName + ".json").getPath()));
-            for (JsonNode node : jsonNode.get("layers")) {
-                if (node.get("type").asText().equalsIgnoreCase(LayerType.TILE_LAYER.getLayerType())) {
-                    List<Integer> tileData = new ArrayList<>();
-                    for (JsonNode data : node.get("data")) {
-                        tileData.add(data.asInt());
-                    }
-                    int[] array = tileData.stream().mapToInt(i -> i).toArray();
-                    layers.add(new Layer(node.get("id").asInt(), node.get("type").asText(), node.get("name").asText(), array));
-                } else {
-                    layers.add(new Layer(node.get("id").asInt(), node.get("type").asText(), node.get("name").asText(), node.get("image").asText()));
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void convertJsonInLayerClass() {
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        try {
+//            layers = new ArrayList<>();
+//            JsonNode jsonNode = objectMapper.readTree(new File(this.getClass().getClassLoader().getResource(SpriteLoader.RESOURCE_FOLDER + "/levels/" + levelName + ".json").getPath()));
+//            for (JsonNode node : jsonNode.get("layers")) {
+//                if (node.get("type").asText().equalsIgnoreCase(LayerType.TILE_LAYER.getLayerType())) {
+//                    List<Integer> tileData = new ArrayList<>();
+//                    for (JsonNode data : node.get("data")) {
+//                        tileData.add(data.asInt());
+//                    }
+//                    int[] array = tileData.stream().mapToInt(i -> i).toArray();
+//                    layers.add(new Layer(node.get("id").asInt(), node.get("type").asText(), node.get("name").asText(), array));
+//                } else {
+//                    layers.add(new Layer(node.get("id").asInt(), node.get("type").asText(), node.get("name").asText(), node.get("image").asText()));
+//                }
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
