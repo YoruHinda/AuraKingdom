@@ -1,18 +1,12 @@
 package main.java.com.github.yoruhinda.aurakingdom.core.level;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import main.java.com.github.yoruhinda.aurakingdom.core.entity.player.Player;
 import main.java.com.github.yoruhinda.aurakingdom.core.level.layer.Layer;
-import main.java.com.github.yoruhinda.aurakingdom.core.level.layer.LayerType;
 import main.java.com.github.yoruhinda.aurakingdom.core.util.SpriteLoader;
 import main.java.com.github.yoruhinda.aurakingdom.core.util.SpriteSheet;
 import main.java.com.github.yoruhinda.aurakingdom.core.util.resourcedirectory.MapDirectory;
 
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Level {
@@ -27,7 +21,7 @@ public class Level {
         this.spriteSheet = new SpriteSheet(SpriteLoader.getTileMap(MapDirectory.MAP));
         spriteSheet.withSpriteSize(16, 16);
         spriteSheet.withRowsAndCols(10, 31);
-        convertJsonInLayerClass();
+        //convertJsonInLayerClass();
     }
 
     public void render(Graphics graphics) {
