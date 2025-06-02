@@ -79,7 +79,7 @@ public class Player extends Entity {
     }
 
     public void playerDash(){
-        if(keyHandler.isRun()){
+        if(keyHandler.isDash()){
             animation.stop();
             animation = dash;
             animation.start();
