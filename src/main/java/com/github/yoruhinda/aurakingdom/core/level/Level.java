@@ -51,6 +51,10 @@ public class Level {
         }
     }
 
+    public void update(){
+
+    }
+
     private void convertJsonInLayer(){
         try {
             JsonNode jsonNode = objectMapper.readTree(new File(this.getClass().getClassLoader().getResource(SpriteLoader.RESOURCE_FOLDER + "/levels/" + levelName + ".json").getPath()));

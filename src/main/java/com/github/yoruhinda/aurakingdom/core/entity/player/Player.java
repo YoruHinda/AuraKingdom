@@ -2,6 +2,7 @@ package main.java.com.github.yoruhinda.aurakingdom.core.entity.player;
 
 import main.java.com.github.yoruhinda.aurakingdom.core.animation.Animation;
 import main.java.com.github.yoruhinda.aurakingdom.core.entity.Entity;
+import main.java.com.github.yoruhinda.aurakingdom.core.game.Game;
 import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GameWindow;
 import main.java.com.github.yoruhinda.aurakingdom.core.handlers.KeyHandler;
 import main.java.com.github.yoruhinda.aurakingdom.core.util.SpriteLoader;
@@ -10,8 +11,15 @@ import main.java.com.github.yoruhinda.aurakingdom.core.util.resourcedirectory.Wa
 import java.awt.*;
 
 public class Player extends Entity {
+    private int player_heath = 100;
+    private int player_damage = 1;
+    private boolean isJumping = false;
+    private float velocityY = 0;
     private final int PLAYER_WIDTH = 64 * GameWindow.SCALE;
     private final int PLAYER_HEIGHT = 49 * GameWindow.SCALE;
+    private final float JUMP_FORCE = -10f;
+    private final float MAX_FALL_SPEED = 12;
+    private final float GRAVITY = 0.5f;
     private KeyHandler keyHandler;
     private Animation idle;
     private Animation walking;
@@ -37,20 +45,30 @@ public class Player extends Entity {
     @Override
     public void update() {
         animation.update();
-        playerMovementUpdater();
-        playerJump();
-        playerCrouch();
-        playerAttack();
-        playerDash();
+        velocityY += GRAVITY;
+        if(velocityY > MAX_FALL_SPEED){
+            velocityY = MAX_FALL_SPEED;
+        }
+        this.y += velocityY;
+        if(this.y >= 4* GameWindow.TILE_SIZE){
+            this.y = 4* GameWindow.TILE_SIZE;
+            velocityY = 0;
+            isJumping = false;
+        }
+        move();
+        jump();
+        crouch();
+        attack();
+        dash();
     }
 
     @Override
     public void render(Graphics graphics) {
-        graphics.drawImage(animation.getCurrentSprite(), this.getX(), this.getY(), this.PLAYER_WIDTH, this.PLAYER_HEIGHT,  null);
+        graphics.drawImage(animation.getCurrentSprite(), (int)this.getX(), (int)this.getY(), this.PLAYER_WIDTH, this.PLAYER_HEIGHT,  null);
         graphics.dispose();
     }
 
-    public void playerMovementUpdater(){
+    private void move(){
         if (!keyHandler.isRight() && !keyHandler.isLeft()) {
             animation = idle;
             animation.start();
@@ -63,39 +81,19 @@ public class Player extends Entity {
         }
     }
 
-    public void playerAttack(){
-        if(keyHandler.isAttack()){
-            animation.stop();
-            animation = attack;
-            animation.start();
-        }
+    private void attack(){
     }
 
-    public void playerCrouch(){
-        if(keyHandler.isCrouch()){
-            animation = crouch;
-            animation.start();
-        }
+    private void crouch(){
     }
 
-    public void playerDash(){
-        if(keyHandler.isDash()){
-            animation.stop();
-            animation = dash;
-            animation.start();
-        }
+    private void dash(){
     }
 
-    public void playerJump(){
-        if(keyHandler.isJump()){
-            this.y -= 1;
-            animation.stop();
-            animation = jump;
-            animation.start();
+    private void jump(){
+        if(!isJumping && keyHandler.isJump()){
+            velocityY = this.JUMP_FORCE;
+            isJumping = true;
         }
-    }
-
-    public void collision(){
-
     }
 }
