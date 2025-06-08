@@ -14,6 +14,7 @@ public class Game extends Thread {
     private static final double TIMER_PER_FRAME = 1_000_000_000.0 / FPS;
     private static final double TIMER_PER_UPDATE = 1_000_000_000.0 / UPS;
     private boolean running;
+    private boolean paused;
     private final GameWindow gameWindow;
     private final GamePanel gamePanel;
     private KeyHandler keyHandler;
@@ -88,5 +89,13 @@ public class Game extends Thread {
 
     public void setRunning(boolean running) {
         this.running = running;
+    }
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    public void setPaused(boolean paused) {
+        this.paused = paused;
     }
 }
