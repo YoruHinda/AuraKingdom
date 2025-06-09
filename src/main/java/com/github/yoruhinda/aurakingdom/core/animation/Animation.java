@@ -11,6 +11,7 @@ public class Animation {
     private int totalFrames;
 
     private boolean stopped;
+    private boolean finished;
 
     private List<BufferedImage> frames;
 
@@ -45,6 +46,7 @@ public class Animation {
         this.stopped = true;
         this.frameCount = 0;
         this.currentFrame = 0;
+        this.finished = false;
     }
 
     public BufferedImage getCurrentSprite(){
@@ -59,8 +61,17 @@ public class Animation {
                 currentFrame += animationDirection;
                 if(currentFrame > totalFrames - 1){
                     currentFrame = 0;
+                    finished = true;
                 }
             }
         }
+    }
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public int getTotalFrames() {
+        return totalFrames;
     }
 }

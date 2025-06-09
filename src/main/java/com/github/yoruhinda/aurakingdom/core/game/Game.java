@@ -22,7 +22,7 @@ public class Game extends Thread {
     private Level level;
 
     public Game() {
-        this.level = new Level("starter_level");
+        this.level = new Level("level1");
         this.keyHandler = new KeyHandler();
         this.player = new Player(0, 4 * GameWindow.TILE_SIZE, this.keyHandler);
         this.gamePanel = new GamePanel(this);
