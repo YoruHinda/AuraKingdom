@@ -1,4 +1,4 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.handlers;
+package com.github.yoruhinda.aurakingdom.core.handlers;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

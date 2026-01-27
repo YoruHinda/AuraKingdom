@@ -1,4 +1,4 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.util;
+package com.github.yoruhinda.aurakingdom.core.util;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;

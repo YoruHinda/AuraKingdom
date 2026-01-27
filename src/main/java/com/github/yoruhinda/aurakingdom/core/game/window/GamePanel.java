@@ -1,6 +1,6 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.game.window;
+package com.github.yoruhinda.aurakingdom.core.game.window;
 
-import main.java.com.github.yoruhinda.aurakingdom.core.game.Game;
+import com.github.yoruhinda.aurakingdom.core.game.Game;
 
 import javax.swing.*;
 import java.awt.*;

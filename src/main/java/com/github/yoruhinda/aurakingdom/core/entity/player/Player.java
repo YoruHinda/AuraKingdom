@@ -1,12 +1,11 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.entity.player;
+package com.github.yoruhinda.aurakingdom.core.entity.player;
 
-import main.java.com.github.yoruhinda.aurakingdom.core.animation.Animation;
-import main.java.com.github.yoruhinda.aurakingdom.core.entity.Entity;
-import main.java.com.github.yoruhinda.aurakingdom.core.game.Game;
-import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GameWindow;
-import main.java.com.github.yoruhinda.aurakingdom.core.handlers.KeyHandler;
-import main.java.com.github.yoruhinda.aurakingdom.core.util.SpriteLoader;
-import main.java.com.github.yoruhinda.aurakingdom.core.util.resourcedirectory.WarriorDirectory;
+import com.github.yoruhinda.aurakingdom.core.animation.Animation;
+import com.github.yoruhinda.aurakingdom.core.entity.Entity;
+import com.github.yoruhinda.aurakingdom.core.game.window.GameWindow;
+import com.github.yoruhinda.aurakingdom.core.handlers.KeyHandler;
+import com.github.yoruhinda.aurakingdom.core.util.SpriteLoader;
+import com.github.yoruhinda.aurakingdom.core.util.resourcedirectory.WarriorDirectory;
 
 import java.awt.*;
 
@@ -88,22 +87,22 @@ public class Player extends Entity {
 
     private void animations(){
         switch(playerState) {
-            case PlayerState.IDLE:
+            case IDLE:
                 animation = idle;
                 break;
-            case PlayerState.WALKING:
+            case WALKING:
                 animation = walking;
                 break;
-            case PlayerState.ATTACK:
+            case ATTACK:
                 animation = attack;
                 break;
-            case PlayerState.JUMP:
+            case JUMP:
                 animation = jump;
                 break;
-            case PlayerState.DASH:
+            case DASH:
                 animation = dash;
                 break;
-            case PlayerState.CROUCH:
+            case CROUCH:
                 animation = crouch;
                 break;
         }

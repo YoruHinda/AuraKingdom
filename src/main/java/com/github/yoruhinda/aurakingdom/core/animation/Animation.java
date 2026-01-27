@@ -1,4 +1,4 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.animation;
+package com.github.yoruhinda.aurakingdom.core.animation;
 
 import java.awt.image.BufferedImage;
 import java.util.List;

@@ -1,4 +1,4 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.level.layer;
+package com.github.yoruhinda.aurakingdom.core.level.layer;
 
 public enum LayerType {
     IMAGE_LAYER("imagelayer"), TILE_LAYER("tilelayer");

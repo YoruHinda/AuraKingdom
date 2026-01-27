@@ -1,6 +1,7 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.game.window;
+package com.github.yoruhinda.aurakingdom.core.game.window;
 
-import main.java.com.github.yoruhinda.aurakingdom.core.handlers.KeyHandler;
+
+import com.github.yoruhinda.aurakingdom.core.handlers.KeyHandler;
 
 import javax.swing.*;
 

@@ -1,15 +1,14 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.level;
+package com.github.yoruhinda.aurakingdom.core.level;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import main.java.com.github.yoruhinda.aurakingdom.core.entity.player.Player;
-import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GameWindow;
-import main.java.com.github.yoruhinda.aurakingdom.core.level.layer.Layer;
-import main.java.com.github.yoruhinda.aurakingdom.core.level.layer.LayerType;
-import main.java.com.github.yoruhinda.aurakingdom.core.util.SpriteLoader;
-import main.java.com.github.yoruhinda.aurakingdom.core.util.SpriteSheet;
-import main.java.com.github.yoruhinda.aurakingdom.core.util.resourcedirectory.MapDirectory;
-
+import com.github.yoruhinda.aurakingdom.core.entity.player.Player;
+import com.github.yoruhinda.aurakingdom.core.game.window.GameWindow;
+import com.github.yoruhinda.aurakingdom.core.level.layer.Layer;
+import com.github.yoruhinda.aurakingdom.core.level.layer.LayerType;
+import com.github.yoruhinda.aurakingdom.core.util.SpriteLoader;
+import com.github.yoruhinda.aurakingdom.core.util.SpriteSheet;
+import com.github.yoruhinda.aurakingdom.core.util.resourcedirectory.MapDirectory;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -53,7 +52,7 @@ public class Level {
 
     private void convertJsonInLayer(){
         try {
-            JsonNode jsonNode = objectMapper.readTree(new File(this.getClass().getClassLoader().getResource(SpriteLoader.RESOURCE_FOLDER + "/levels/" + levelName + ".json").getPath()));
+            JsonNode jsonNode = objectMapper.readTree(new File(this.getClass().getClassLoader().getResource("levels/" + levelName + ".json").getPath()));
             for(JsonNode node : jsonNode.get("layers")){
                 if (node.get("type").asText().equalsIgnoreCase(LayerType.TILE_LAYER.getLayerType())) {
                     List<Integer> tileData = new ArrayList<>();

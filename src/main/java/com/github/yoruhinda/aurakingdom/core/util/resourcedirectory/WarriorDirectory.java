@@ -1,4 +1,4 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.util.resourcedirectory;
+package com.github.yoruhinda.aurakingdom.core.util.resourcedirectory;
 
 public class WarriorDirectory {
     public static final String ATTACK = "Warrior/Attack";

@@ -1,4 +1,4 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.entity;
+package com.github.yoruhinda.aurakingdom.core.entity;
 
 import java.awt.*;
 

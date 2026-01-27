@@ -1,10 +1,10 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.game;
+package com.github.yoruhinda.aurakingdom.core.game;
 
-import main.java.com.github.yoruhinda.aurakingdom.core.entity.player.Player;
-import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GamePanel;
-import main.java.com.github.yoruhinda.aurakingdom.core.game.window.GameWindow;
-import main.java.com.github.yoruhinda.aurakingdom.core.handlers.KeyHandler;
-import main.java.com.github.yoruhinda.aurakingdom.core.level.Level;
+import com.github.yoruhinda.aurakingdom.core.entity.player.Player;
+import com.github.yoruhinda.aurakingdom.core.game.window.GamePanel;
+import com.github.yoruhinda.aurakingdom.core.game.window.GameWindow;
+import com.github.yoruhinda.aurakingdom.core.handlers.KeyHandler;
+import com.github.yoruhinda.aurakingdom.core.level.Level;
 
 import java.awt.*;
 

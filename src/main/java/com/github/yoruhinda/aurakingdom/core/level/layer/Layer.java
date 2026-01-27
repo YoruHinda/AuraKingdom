@@ -1,4 +1,4 @@
-package main.java.com.github.yoruhinda.aurakingdom.core.level.layer;
+package com.github.yoruhinda.aurakingdom.core.level.layer;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
