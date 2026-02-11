@@ -10,7 +10,7 @@ import com.github.yoruhinda.aurakingdom.core.util.resourcedirectory.WarriorDirec
 import java.awt.*;
 
 public class Player extends Entity {
-    private int player_heath = 100;
+    private int player_health = 100;
     private int player_damage = 1;
     private PlayerState playerState = PlayerState.IDLE;
     private boolean isJumping = false;
@@ -20,9 +20,6 @@ public class Player extends Entity {
     private final float JUMP_FORCE = -10f;
     private final float MAX_FALL_SPEED = 12;
     private final float GRAVITY = 0.5f;
-    private int animationFrame = 0;
-    private int animationMaxFrame = 0;
-    private boolean animationlocked = false;
     private KeyHandler keyHandler;
     private Animation idle;
     private Animation walking;
@@ -57,19 +54,6 @@ public class Player extends Entity {
             this.y = 4* GameWindow.TILE_SIZE;
             velocityY = 0;
             isJumping = false;
-        }
-        if(animationlocked){
-            animationFrame++;
-            if(animationFrame >= animationMaxFrame){
-                animationlocked = false;
-                playerState = PlayerState.IDLE;
-                animationFrame = 0;
-            }
-            return;
-        }
-        if(animation.isFinished()){
-            animationlocked = false;
-            playerState = PlayerState.IDLE;
         }
         move();
         jump();
@@ -112,15 +96,14 @@ public class Player extends Entity {
         if(keyHandler.isRight()){
             this.x += 3;
             playerState = PlayerState.WALKING;
+            animation.reset();
+            animation.start();
         }
     }
 
     private void attack(){
-        if(keyHandler.isAttack() && !animationlocked){
+        if(keyHandler.isAttack()){
             playerState = PlayerState.ATTACK;
-            animationMaxFrame = animation.getTotalFrames();
-            animationFrame = 0;
-            animationlocked = true;
             animation.reset();
             animation.start();
         }
@@ -129,27 +112,18 @@ public class Player extends Entity {
     private void crouch(){
         if(keyHandler.isCrouch()){
             playerState = PlayerState.CROUCH;
-            animationMaxFrame = animation.getTotalFrames();
-            animationFrame = 0;
-            animationlocked = true;
         }
     }
 
     private void dash(){
         if(keyHandler.isDash()){
             playerState = PlayerState.DASH;
-            animationMaxFrame = animation.getTotalFrames();
-            animationFrame = 0;
-            animationlocked = true;
         }
     }
 
     private void jump(){
         if(!isJumping && keyHandler.isJump()){
             playerState = PlayerState.JUMP;
-            animationMaxFrame = animation.getTotalFrames();
-            animationFrame = 0;
-            animationlocked = true;
             velocityY = this.JUMP_FORCE;
             isJumping = true;
         }
