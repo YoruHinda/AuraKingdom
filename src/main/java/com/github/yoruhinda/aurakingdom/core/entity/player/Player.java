@@ -14,6 +14,7 @@ public class Player extends Entity {
     private int player_damage = 1;
     private PlayerState playerState = PlayerState.IDLE;
     private boolean isJumping = false;
+    private boolean isAttacking = false;
     private float velocityY = 0;
     private final int PLAYER_WIDTH = 64 * GameWindow.SCALE;
     private final int PLAYER_HEIGHT = 49 * GameWindow.SCALE;
@@ -60,7 +61,6 @@ public class Player extends Entity {
         crouch();
         attack();
         dash();
-        animations();
     }
 
     @Override
@@ -69,7 +69,9 @@ public class Player extends Entity {
         graphics.dispose();
     }
 
-    private void animations(){
+    private void setPlayerState(PlayerState playerState){
+        if(this.playerState != playerState){
+            this.playerState = playerState;
         switch(playerState) {
             case IDLE:
                 animation = idle;
@@ -90,40 +92,45 @@ public class Player extends Entity {
                 animation = crouch;
                 break;
         }
+        animation.reset();
+        animation.start();
+        }
     }
 
     private void move(){
         if(keyHandler.isRight()){
             this.x += 3;
-            playerState = PlayerState.WALKING;
-            animation.reset();
-            animation.start();
+            setPlayerState(PlayerState.WALKING);
+        }else {
+            if(!isJumping && !isAttacking){
+                setPlayerState(PlayerState.IDLE);
+            }
         }
     }
 
     private void attack(){
-        if(keyHandler.isAttack()){
-            playerState = PlayerState.ATTACK;
-            animation.reset();
-            animation.start();
+        if(keyHandler.isAttack() && !isAttacking){
+            this.isAttacking = true;
+            setPlayerState(PlayerState.ATTACK);
+        }
+        if(isAttacking && attack.isFinished()){
+            this.isAttacking = false;
+            setPlayerState(PlayerState.IDLE);
         }
     }
 
     private void crouch(){
         if(keyHandler.isCrouch()){
-            playerState = PlayerState.CROUCH;
         }
     }
 
     private void dash(){
         if(keyHandler.isDash()){
-            playerState = PlayerState.DASH;
         }
     }
 
     private void jump(){
         if(!isJumping && keyHandler.isJump()){
-            playerState = PlayerState.JUMP;
             velocityY = this.JUMP_FORCE;
             isJumping = true;
         }
