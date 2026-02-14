@@ -133,6 +133,7 @@ public class Player extends Entity {
         if(!isJumping && keyHandler.isJump()){
             velocityY = this.JUMP_FORCE;
             isJumping = true;
+            setPlayerState(PlayerState.JUMP);
         }
     }
 }
