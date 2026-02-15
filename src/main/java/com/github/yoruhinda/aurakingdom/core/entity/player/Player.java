@@ -98,7 +98,7 @@ public class Player extends Entity {
     }
 
     private void move(){
-        if(keyHandler.isRight()){
+        if(keyHandler.isRight() && !isAttacking){
             this.x += 3;
             setPlayerState(PlayerState.WALKING);
         }else {
@@ -109,7 +109,7 @@ public class Player extends Entity {
     }
 
     private void attack(){
-        if(keyHandler.isAttack() && !isAttacking){
+        if(keyHandler.isAttack() && !isAttacking && !isJumping){
             this.isAttacking = true;
             setPlayerState(PlayerState.ATTACK);
         }
@@ -130,7 +130,7 @@ public class Player extends Entity {
     }
 
     private void jump(){
-        if(!isJumping && keyHandler.isJump()){
+        if(!isJumping && keyHandler.isJump() && !isAttacking){
             velocityY = this.JUMP_FORCE;
             isJumping = true;
             setPlayerState(PlayerState.JUMP);
