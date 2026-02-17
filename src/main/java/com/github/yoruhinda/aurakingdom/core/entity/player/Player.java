@@ -121,11 +121,13 @@ public class Player extends Entity {
 
     private void crouch(){
         if(keyHandler.isCrouch()){
+            setPlayerState(PlayerState.CROUCH);
         }
     }
 
     private void dash(){
         if(keyHandler.isDash()){
+            setPlayerState(PlayerState.DASH);
         }
     }
 
