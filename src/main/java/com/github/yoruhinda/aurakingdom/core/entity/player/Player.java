@@ -15,6 +15,8 @@ public class Player extends Entity {
     private PlayerState playerState = PlayerState.IDLE;
     private boolean isJumping = false;
     private boolean isAttacking = false;
+    private boolean isDashing = false;
+    private boolean isCrouch = false;
     private float velocityY = 0;
     private final int PLAYER_WIDTH = 64 * GameWindow.SCALE;
     private final int PLAYER_HEIGHT = 49 * GameWindow.SCALE;
@@ -55,6 +57,9 @@ public class Player extends Entity {
             this.y = 4* GameWindow.TILE_SIZE;
             velocityY = 0;
             isJumping = false;
+        }
+        if(!isJumping && !isAttacking && !isDashing && !isCrouch){
+            setPlayerState(PlayerState.IDLE);
         }
         move();
         jump();
@@ -101,10 +106,6 @@ public class Player extends Entity {
         if(keyHandler.isRight() && !isAttacking){
             this.x += 3;
             setPlayerState(PlayerState.WALKING);
-        }else {
-            if(!isJumping && !isAttacking){
-                setPlayerState(PlayerState.IDLE);
-            }
         }
     }
 
@@ -120,14 +121,23 @@ public class Player extends Entity {
     }
 
     private void crouch(){
-        if(keyHandler.isCrouch()){
+        if(keyHandler.isCrouch() && !isCrouch) {
             setPlayerState(PlayerState.CROUCH);
+            isCrouch = true;
+        }
+        if(isCrouch && crouch.isFinished()){
+            isCrouch = false;
         }
     }
 
     private void dash(){
-        if(keyHandler.isDash()){
+        if(keyHandler.isDash() && !isDashing){
+            this.x += 15;
             setPlayerState(PlayerState.DASH);
+            isDashing = true;
+        }
+        if (isDashing && dash.isFinished()){
+            isDashing = false;
         }
     }
 

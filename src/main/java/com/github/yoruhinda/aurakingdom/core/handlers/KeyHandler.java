@@ -15,7 +15,7 @@ public class KeyHandler implements KeyListener {
         switch (keyEvent.getKeyCode()){
             case KeyEvent.VK_RIGHT -> right = true;
             case KeyEvent.VK_LEFT -> left = true;
-            case KeyEvent.VK_SPACE -> jump = true;
+            case KeyEvent.VK_UP -> jump = true;
             case KeyEvent.VK_DOWN -> crouch = true;
             case KeyEvent.VK_A -> attack = true;
             case KeyEvent.VK_SHIFT -> dash = true;
@@ -27,7 +27,7 @@ public class KeyHandler implements KeyListener {
         switch (keyEvent.getKeyCode()){
             case KeyEvent.VK_RIGHT -> right = false;
             case KeyEvent.VK_LEFT -> left = false;
-            case KeyEvent.VK_SPACE -> jump = false;
+            case KeyEvent.VK_UP -> jump = false;
             case KeyEvent.VK_DOWN -> crouch = false;
             case KeyEvent.VK_A -> attack = false;
             case KeyEvent.VK_SHIFT -> dash = false;
