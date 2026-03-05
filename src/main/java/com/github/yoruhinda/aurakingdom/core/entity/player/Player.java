@@ -107,6 +107,9 @@ public class Player extends Entity {
             this.x += 3;
             setPlayerState(PlayerState.WALKING);
         }
+        if(keyHandler.isLeft()){
+            this.x -= 3;
+        }
     }
 
     private void attack(){
