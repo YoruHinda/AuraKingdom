@@ -1,7 +1,7 @@
 <h1 align="center">AuraKingdom</h1>
 
 # Description!
-A platform game develop by me, i create a two level with a warrior which defeat demons.
+A platform game develop by me, I create a two level with a warrior which defeat demons.
 # Tools
 - jdk
 - maven
