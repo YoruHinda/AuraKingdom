@@ -2,7 +2,7 @@
  "layers":[
         {
          "id":2,
-         "image":"darkcastle.jpg",
+         "image":"LevelOneImage.jpg",
          "imageheight":128,
          "imagewidth":256,
          "name":"Camada de Imagens 1",

@@ -71,7 +71,6 @@ public class Player extends Entity {
     @Override
     public void render(Graphics graphics) {
         graphics.drawImage(animation.getCurrentSprite(), (int)this.getX(), (int)this.getY(), this.PLAYER_WIDTH, this.PLAYER_HEIGHT,  null);
-        graphics.dispose();
     }
 
     private void setPlayerState(PlayerState playerState){

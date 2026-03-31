@@ -1,10 +1,8 @@
-{ "compressionlevel":-1,
- "height":20,
- "infinite":true,
+{
  "layers":[
         {
          "id":2,
-         "image":"..\/..\/..\/..\/..\/Downloads\/dark_castle\/Dark Castle (20).jpg",
+         "image":"LevelTwoImage.jpg",
          "imageheight":768,
          "imagewidth":768,
          "name":"Image Layer 1",
@@ -227,20 +225,5 @@
          "width":48,
          "x":0,
          "y":0
-        }],
- "nextlayerid":3,
- "nextobjectid":1,
- "orientation":"orthogonal",
- "renderorder":"right-down",
- "tiledversion":"1.11.2",
- "tileheight":16,
- "tilesets":[
-        {
-         "firstgid":1,
-         "source":"..\/..\/..\/..\/..\/AuraKingdomTileSet.tsx"
-        }],
- "tilewidth":16,
- "type":"map",
- "version":"1.10",
- "width":30
+        }]
 }
