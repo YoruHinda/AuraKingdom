@@ -7,7 +7,7 @@ A platform game develop by me, I create a two level with a warrior which defeat 
 - maven
 - jackson
 # How Play?
-Run .jar file with jdk or jre
+Run .jar file
 # LICENSE
 This project is under for MIT LICENSE, for more details read LICENSE file.
 # Credits
