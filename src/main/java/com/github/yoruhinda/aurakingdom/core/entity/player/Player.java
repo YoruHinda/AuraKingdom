@@ -47,7 +47,6 @@ public class Player extends Entity {
 
     @Override
     public void update() {
-        animation.update();
         velocityY += GRAVITY;
         if(velocityY > MAX_FALL_SPEED){
             velocityY = MAX_FALL_SPEED;
@@ -58,14 +57,13 @@ public class Player extends Entity {
             velocityY = 0;
             isJumping = false;
         }
-        if(!isJumping && !isAttacking && !isDashing && !isCrouch){
-            setPlayerState(PlayerState.IDLE);
-        }
         move();
-        jump();
-        crouch();
-        attack();
-        dash();
+//        jump();
+//        crouch();
+//        attack();
+//        dash();
+        updateState();
+        animation.update();
     }
 
     @Override
@@ -101,53 +99,75 @@ public class Player extends Entity {
         }
     }
 
-    private void move(){
-        if(keyHandler.isRight() && !isAttacking){
-            this.x += 3;
-            setPlayerState(PlayerState.WALKING);
-        }
-        if(keyHandler.isLeft()){
-            this.x -= 3;
-        }
-    }
-
-    private void attack(){
-        if(keyHandler.isAttack() && !isAttacking && !isJumping){
-            this.isAttacking = true;
+    private void updateState(){
+        if(isAttacking){
             setPlayerState(PlayerState.ATTACK);
         }
-        if(isAttacking && attack.isFinished()){
-            this.isAttacking = false;
+        else if(isDashing){
+            setPlayerState(PlayerState.DASH);
+        }
+        else if(isJumping){
+            setPlayerState(PlayerState.JUMP);
+        }
+        else if(isCrouch){
+            setPlayerState(PlayerState.CROUCH);
+        }
+        else if(keyHandler.isLeft() || keyHandler.isRight()){
+            setPlayerState(PlayerState.WALKING);
+        }
+        else{
             setPlayerState(PlayerState.IDLE);
         }
     }
 
-    private void crouch(){
-        if(keyHandler.isCrouch() && !isCrouch) {
-            setPlayerState(PlayerState.CROUCH);
-            isCrouch = true;
-        }
-        if(isCrouch && crouch.isFinished()){
-            isCrouch = false;
-        }
-    }
-
-    private void dash(){
-        if(keyHandler.isDash() && !isDashing){
-            this.x += 15;
-            setPlayerState(PlayerState.DASH);
-            isDashing = true;
-        }
-        if (isDashing && dash.isFinished()){
-            isDashing = false;
+    private void move(){
+        if (isAttacking || isJumping || isDashing || isCrouch) return;
+        if(keyHandler.isRight()){
+            this.x += 5;
+            setPlayerState(PlayerState.WALKING);
+        } else if(keyHandler.isLeft()){
+            this.x -= 5;
+            setPlayerState(PlayerState.WALKING);
         }
     }
 
-    private void jump(){
-        if(!isJumping && keyHandler.isJump() && !isAttacking){
-            velocityY = this.JUMP_FORCE;
-            isJumping = true;
-            setPlayerState(PlayerState.JUMP);
-        }
-    }
+//    private void attack(){
+//        if(keyHandler.isAttack() && !isAttacking && !isJumping){
+//            this.isAttacking = true;
+//            setPlayerState(PlayerState.ATTACK);
+//        }
+//        if(isAttacking && attack.isFinished()){
+//            this.isAttacking = false;
+//            setPlayerState(PlayerState.IDLE);
+//        }
+//    }
+//
+//    private void crouch(){
+//        if(keyHandler.isCrouch() && !isCrouch) {
+//            setPlayerState(PlayerState.CROUCH);
+//            isCrouch = true;
+//        }
+//        if(isCrouch && crouch.isFinished()){
+//            isCrouch = false;
+//        }
+//    }
+//
+//    private void dash(){
+//        if(keyHandler.isDash() && !isDashing){
+//            this.x += 15;
+//            setPlayerState(PlayerState.DASH);
+//            isDashing = true;
+//        }
+//        if (isDashing && dash.isFinished()){
+//            isDashing = false;
+//        }
+//    }
+//
+//    private void jump(){
+//        if(!isJumping && keyHandler.isJump() && !isAttacking){
+//            velocityY = this.JUMP_FORCE;
+//            isJumping = true;
+//            setPlayerState(PlayerState.JUMP);
+//        }
+//    }
 }
