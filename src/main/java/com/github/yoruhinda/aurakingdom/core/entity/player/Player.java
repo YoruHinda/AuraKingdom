@@ -39,7 +39,7 @@ public class Player extends Entity {
         walking = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.RUN), 6);
         jump = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.JUMP), 6);
         crouch = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.CROUCH), 6);
-        attack = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.ATTACK), 6);
+        attack = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.ATTACK), 4);
         dash = new Animation(SpriteLoader.getWarriorSprite(WarriorDirectory.DASH), 6);
         animation = idle;
         animation.start();
@@ -58,9 +58,9 @@ public class Player extends Entity {
             isJumping = false;
         }
         move();
+        attack();
 //        jump();
 //        crouch();
-//        attack();
 //        dash();
         updateState();
         animation.update();
@@ -124,24 +124,21 @@ public class Player extends Entity {
         if (isAttacking || isJumping || isDashing || isCrouch) return;
         if(keyHandler.isRight()){
             this.x += 5;
-            setPlayerState(PlayerState.WALKING);
         } else if(keyHandler.isLeft()){
             this.x -= 5;
-            setPlayerState(PlayerState.WALKING);
         }
     }
 
-//    private void attack(){
-//        if(keyHandler.isAttack() && !isAttacking && !isJumping){
-//            this.isAttacking = true;
-//            setPlayerState(PlayerState.ATTACK);
-//        }
-//        if(isAttacking && attack.isFinished()){
-//            this.isAttacking = false;
-//            setPlayerState(PlayerState.IDLE);
-//        }
-//    }
-//
+    private void attack(){
+        if(keyHandler.isAttack() && !isAttacking){
+            this.isAttacking = true;
+        }
+        else if(isAttacking && attack.isFinished()){
+            this.isAttacking = false;
+        }
+
+    }
+
 //    private void crouch(){
 //        if(keyHandler.isCrouch() && !isCrouch) {
 //            setPlayerState(PlayerState.CROUCH);
