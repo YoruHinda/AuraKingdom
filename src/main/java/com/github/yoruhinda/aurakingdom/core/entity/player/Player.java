@@ -60,7 +60,7 @@ public class Player extends Entity {
         move();
         attack();
         jump();
-//        crouch();
+        crouch();
         dash();
         updateState();
         animation.update();
@@ -139,16 +139,15 @@ public class Player extends Entity {
 
     }
 
-//    private void crouch(){
-//        if(keyHandler.isCrouch() && !isCrouch) {
-//            setPlayerState(PlayerState.CROUCH);
-//            isCrouch = true;
-//        }
-//        if(isCrouch && crouch.isFinished()){
-//            isCrouch = false;
-//        }
-//    }
-//
+    private void crouch(){
+        if(keyHandler.isCrouch()) {
+            isCrouch = true;
+        }
+        else{
+            isCrouch = false;
+        }
+    }
+
     private void dash(){
         if(isDashing){
             this.x += 5;
