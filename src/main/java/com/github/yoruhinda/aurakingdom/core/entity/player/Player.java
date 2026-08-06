@@ -61,7 +61,7 @@ public class Player extends Entity {
         attack();
 //        jump();
 //        crouch();
-//        dash();
+        dash();
         updateState();
         animation.update();
     }
@@ -149,17 +149,18 @@ public class Player extends Entity {
 //        }
 //    }
 //
-//    private void dash(){
-//        if(keyHandler.isDash() && !isDashing){
-//            this.x += 15;
-//            setPlayerState(PlayerState.DASH);
-//            isDashing = true;
-//        }
-//        if (isDashing && dash.isFinished()){
-//            isDashing = false;
-//        }
-//    }
-//
+    private void dash(){
+        if(isDashing){
+            this.x += 5;
+        }
+        if(keyHandler.isDash() && !isDashing){
+            isDashing = true;
+        }
+        else if (isDashing && dash.isFinished()){
+            isDashing = false;
+        }
+    }
+
 //    private void jump(){
 //        if(!isJumping && keyHandler.isJump() && !isAttacking){
 //            velocityY = this.JUMP_FORCE;
