@@ -59,7 +59,7 @@ public class Player extends Entity {
         }
         move();
         attack();
-//        jump();
+        jump();
 //        crouch();
         dash();
         updateState();
@@ -161,11 +161,11 @@ public class Player extends Entity {
         }
     }
 
-//    private void jump(){
-//        if(!isJumping && keyHandler.isJump() && !isAttacking){
-//            velocityY = this.JUMP_FORCE;
-//            isJumping = true;
-//            setPlayerState(PlayerState.JUMP);
-//        }
-//    }
+    private void jump(){
+        if(!isJumping && keyHandler.isJump() && !isAttacking){
+            velocityY = this.JUMP_FORCE;
+            isJumping = true;
+            setPlayerState(PlayerState.JUMP);
+        }
+    }
 }
