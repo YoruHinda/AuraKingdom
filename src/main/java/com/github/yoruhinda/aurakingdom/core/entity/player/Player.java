@@ -17,6 +17,7 @@ public class Player extends Entity {
     private boolean isAttacking = false;
     private boolean isDashing = false;
     private boolean isCrouch = false;
+    private boolean facingLeft = false;
     private float velocityY = 0;
     private final int PLAYER_WIDTH = 64 * GameWindow.SCALE;
     private final int PLAYER_HEIGHT = 49 * GameWindow.SCALE;
@@ -68,7 +69,12 @@ public class Player extends Entity {
 
     @Override
     public void render(Graphics graphics) {
-        graphics.drawImage(animation.getCurrentSprite(), (int)this.getX(), (int)this.getY(), this.PLAYER_WIDTH, this.PLAYER_HEIGHT,  null);
+        if(!facingLeft){
+            graphics.drawImage(animation.getCurrentSprite(), (int)this.getX(), (int)this.getY(), this.PLAYER_WIDTH, this.PLAYER_HEIGHT,  null);
+        }else {
+            graphics.drawImage(animation.getCurrentSprite(), (int)this.getX() + this.PLAYER_WIDTH, (int)this.getY(), -this.PLAYER_WIDTH, this.PLAYER_HEIGHT,  null);
+        }
+
     }
 
     private void setPlayerState(PlayerState playerState){
@@ -121,11 +127,12 @@ public class Player extends Entity {
     }
 
     private void move(){
-        if (isAttacking || isJumping || isDashing || isCrouch) return;
         if(keyHandler.isRight()){
             this.x += 5;
+            this.facingLeft = false;
         } else if(keyHandler.isLeft()){
             this.x -= 5;
+            this.facingLeft = true;
         }
     }
 
