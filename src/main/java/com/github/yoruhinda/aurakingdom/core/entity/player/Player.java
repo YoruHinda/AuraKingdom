@@ -156,8 +156,10 @@ public class Player extends Entity {
     }
 
     private void dash(){
-        if(isDashing){
+        if(isDashing && !facingLeft){
             this.x += 5;
+        }else if(isDashing){
+            this.x -= 5;
         }
         if(keyHandler.isDash() && !isDashing){
             isDashing = true;
