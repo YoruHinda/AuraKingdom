@@ -1,5 +1,6 @@
 package com.github.yoruhinda.aurakingdom.core.game;
 
+import com.github.yoruhinda.aurakingdom.core.entity.enemy.Skeleton;
 import com.github.yoruhinda.aurakingdom.core.entity.player.Player;
 import com.github.yoruhinda.aurakingdom.core.game.window.GamePanel;
 import com.github.yoruhinda.aurakingdom.core.game.window.GameWindow;
@@ -19,6 +20,7 @@ public class Game extends Thread {
     private final GamePanel gamePanel;
     private KeyHandler keyHandler;
     private Player player;
+    private Skeleton skeleton;
     private Level level;
 
     public Game() {
